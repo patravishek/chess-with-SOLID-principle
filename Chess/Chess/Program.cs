@@ -9,7 +9,7 @@ namespace Chess
         {
             var _chessObj = new ChessBoard();
             _chessObj.CreateChessBoard();
-            Console.Write(_chessObj.BoardMap.Find(val=>val.Equals("A2")));
+            Console.Write(_chessObj.BoardMap.Find(value => value.Item1.Equals("A2")).Item1);
             Console.ReadLine();
         }
     }

@@ -18,7 +18,8 @@ namespace Chess.Tests
         public void IsBoardGenerated()
         {
             _chessObj.CreateChessBoard();
-            Assert.AreEqual("A2", _chessObj.BoardMap.Find(val => val.Equals("A2")));
+            Assert.AreEqual("A2", _chessObj.BoardMap.Find(value=>value.Item1.Equals("A2")).Item1);
+            Assert.AreEqual(false, _chessObj.BoardMap.Find(value => value.Item1.Equals("A2")).Item2);
         }
 
         [TestMethod]

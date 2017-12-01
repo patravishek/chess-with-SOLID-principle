@@ -7,9 +7,9 @@ namespace Chess.Implementation
 {
     public class ChessBoard : IChessBoard
     {
-        private List<string> _boardMap = new List<string>();
+        private List<Tuple<string, bool>> _boardMap = new List<Tuple<string, bool>>();
 
-        public List<string> BoardMap
+        public List<Tuple<string,bool>> BoardMap
         {
             get
             {
@@ -31,9 +31,10 @@ namespace Chess.Implementation
 
         private string GenerateCellName(int rowId, int colId)
         {
-            var cellName = Constant.GetRowName(Constant.Row - rowId) + Convert.ToString(colId);
-            _boardMap.Add(cellName);
-            return cellName;
+            var _cellName = Constant.GetRowName(Constant.Row - rowId) + Convert.ToString(colId);
+            var _boardValue = Tuple.Create(_cellName, false);
+            _boardMap.Add(_boardValue);
+            return _cellName;
         }
     }
 }
