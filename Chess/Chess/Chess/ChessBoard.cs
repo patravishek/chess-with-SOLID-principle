@@ -23,12 +23,17 @@ namespace Chess.Implementation
             {
                 for(int row = Constant.Row; row >= 1; row--)
                 {
-                    var rowAddress = Constant.GetRowName(Constant.Row - row) + Convert.ToString(col);
-                    _boardMap.Add(rowAddress);
-                    Console.Write("{0}", rowAddress);
+                    Console.Write("{0}", GenerateCellName(row,col));
                 }
                 Console.Write("\n");
             }
+        }
+
+        private string GenerateCellName(int rowId, int colId)
+        {
+            var cellName = Constant.GetRowName(Constant.Row - rowId) + Convert.ToString(colId);
+            _boardMap.Add(cellName);
+            return cellName;
         }
     }
 }
