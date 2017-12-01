@@ -1,4 +1,5 @@
 ﻿using System;
+using Chess.Implementation;
 
 namespace Chess
 {
@@ -6,7 +7,10 @@ namespace Chess
     {
         static void Main(string[] args)
         {
-            //Entry point of the program, will add calls for chessboard
+            var _chessObj = new ChessBoard();
+            _chessObj.CreateChessBoard();
+            Console.Write(_chessObj.BoardMap.Find(value => value.Item1.Equals("A2")).Item1);
+            Console.ReadLine();
         }
     }
 }
