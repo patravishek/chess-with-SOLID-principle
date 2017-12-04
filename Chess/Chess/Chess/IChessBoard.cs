@@ -5,6 +5,6 @@ namespace Chess.Interface
     public interface IChessBoard
     {
         void CreateChessBoard();
-        List<string> PieceMoveInBoard(string pieceName);
+        string PieceMoveInBoard(string pieceName, string cell);
     }
 }

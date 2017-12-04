@@ -1,13 +1,14 @@
 ﻿using Chess.Constants;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Chess.PieceMoves
 {
-    public class KingMove : BasePieceMoves
+    public class HorseMove : BasePieceMoves
     {
         /// <summary>
-        /// King can move in 8 direction
+        /// Horse can move bit wierd way :)
         /// </summary>
         /// <param name="currentPosition"></param>
         /// <returns></returns>
@@ -16,14 +17,14 @@ namespace Chess.PieceMoves
             var currentPositionIndex = chess.BoardMap.IndexOf(chess.BoardMap.Find(value => value.Item1.Equals(currentPosition)));
             var nextPossibleMove = new List<int>
             {
-                (currentPositionIndex + 1),//E5
-                (currentPositionIndex - 1),//C5
-                (currentPositionIndex + Constant.Row),//D4
-                (currentPositionIndex + (Constant.Row + 1)),//E4
-                (currentPositionIndex + (Constant.Row - 1)),//C4
-                (currentPositionIndex - Constant.Row),//D6
-                (currentPositionIndex - (Constant.Row + 1)),//C6
-                (currentPositionIndex - (Constant.Row - 1))//E6
+                (currentPositionIndex + (Constant.Row - 2)),
+                (currentPositionIndex + (Constant.Row + 2)),
+                (currentPositionIndex - (Constant.Row - 2)),
+                (currentPositionIndex - (Constant.Row + 2)),
+                (currentPositionIndex - ((Constant.Row * 2) - 1)),
+                (currentPositionIndex - ((Constant.Row * 2) + 1)),
+                (currentPositionIndex + ((Constant.Row * 2) - 1)),
+                (currentPositionIndex + ((Constant.Row * 2) + 1))
             };
 
             //Check if the positions are not occupied

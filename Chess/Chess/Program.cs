@@ -22,6 +22,8 @@ namespace Chess
             string displayText = "@@Avilable Pieces, 'King, Queen, Bishop, Horse, Rook, Pawn' @Enter a piece type to move:";
             Console.Write(displayText.Replace("@",System.Environment.NewLine));
             var inputString = Console.ReadLine();
+            Console.WriteLine(chess.PieceMoveInBoard(inputString.Split(" ")[0], inputString.Split(" ")[1]));
+            Console.ReadLine();
         }
     }
 }

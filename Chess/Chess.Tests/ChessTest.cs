@@ -24,6 +24,8 @@ namespace Chess.Tests
 
             Assert.AreEqual("A6", chess.BoardMap.Find(value => value.Item1.Equals("A6")).Item1);
             Assert.AreEqual(false, chess.BoardMap.Find(value => value.Item1.Equals("A6")).Item2);
+
+            Assert.IsNull(chess.BoardMap.Find(value => value.Item1.Equals("D9")));
         }
         
         [TestMethod]
@@ -40,11 +42,40 @@ namespace Chess.Tests
             Assert.AreEqual("D4", outcome1.Find(value => value.Equals("D4")));
             Assert.AreEqual("C4", outcome1.Find(value => value.Equals("C4")));
             Assert.AreEqual("E4", outcome1.Find(value => value.Equals("E4")));
+
+            var outcome2 = king.Moves("D8");
+            Assert.AreEqual("D7", outcome2.Find(value => value.Equals("D7")));
+            Assert.AreEqual("E8", outcome2.Find(value => value.Equals("E8")));
+            Assert.AreEqual("C8", outcome2.Find(value => value.Equals("C8")));
+            Assert.AreEqual("C7", outcome2.Find(value => value.Equals("C7")));
+            Assert.AreEqual("E7", outcome2.Find(value => value.Equals("E7")));
+
+            //Tests should fail since they are out of index
+            Assert.AreNotEqual("D9", outcome2.Find(value => value.Equals("D9")));
+            Assert.AreNotEqual("C9", outcome2.Find(value => value.Equals("C9")));
+            Assert.AreNotEqual("E9", outcome2.Find(value => value.Equals("E9")));
+        }
+
+        [TestMethod]
+        public void TestHorseMoves()
+        {
+            chess.CreateChessBoard();
+            var horse = new HorseMove();
+            var outcome1 = horse.Moves("E3");
+            Assert.AreEqual("D5", outcome1.Find(value => value.Equals("D5")));
+            Assert.AreEqual("F5", outcome1.Find(value => value.Equals("F5")));
+            Assert.AreEqual("C4", outcome1.Find(value => value.Equals("C4")));
+            Assert.AreEqual("G4", outcome1.Find(value => value.Equals("G4")));
+            Assert.AreEqual("C2", outcome1.Find(value => value.Equals("C2")));
+            Assert.AreEqual("G2", outcome1.Find(value => value.Equals("G2")));
+            Assert.AreEqual("D1", outcome1.Find(value => value.Equals("D1")));
+            Assert.AreEqual("F1", outcome1.Find(value => value.Equals("F1")));
         }
 
         [TestMethod]
         public void TestPawnMoves()
         {
+            chess.CreateChessBoard();
             var pawn = new PawnMove();
             var outcome1 = pawn.Moves("H7");
             Assert.AreEqual("H6", outcome1.Find(value => value.Equals("H6")));
@@ -54,6 +85,14 @@ namespace Chess.Tests
             Assert.AreEqual("B2", outcome3.Find(value => value.Equals("B2")));
             var outcome4 = pawn.Moves("E5");
             Assert.AreEqual("E4", outcome4.Find(value => value.Equals("E4")));
+        }
+
+        [TestMethod]
+        public void TestPieceMoveInBoard()
+        {
+            chess.CreateChessBoard();
+            var outcome = chess.PieceMoveInBoard("King", "D5");
+            Assert.IsNotNull(outcome);
         }
     }
 }
