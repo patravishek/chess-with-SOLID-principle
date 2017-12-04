@@ -16,7 +16,7 @@ namespace Chess.Tests
         }
 
         [TestMethod]
-        public void IsBoardGenerated()
+        public void TestBoardSettings()
         {
             chess.CreateChessBoard();
             Assert.AreEqual("A2", chess.BoardMap.Find(value=>value.Item1.Equals("A2")).Item1);
@@ -27,7 +27,7 @@ namespace Chess.Tests
         }
         
         [TestMethod]
-        public void IsKingsMoveTrue()
+        public void TestKingMoves()
         {
             chess.CreateChessBoard();
             var king = new KingMove();
