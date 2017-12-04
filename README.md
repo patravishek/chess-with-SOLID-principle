@@ -28,3 +28,5 @@ A1B1C1D1E1F1G1H1
 Avilable Pieces, 'King, Queen, Bishop, Horse, Rook, Pawn'
 Enter a piece type to move:King D6
 E6,C6,D5,E5,C5,D7,C7,E7,
+
+Since its built on a console platform so it might gives an impression that IChessBoard interface is not getting used, but I have kept a provision incase we decide to change the platform from console to windows or web based app, then we can Use DI and IoC more easily and create a robost chess app.
