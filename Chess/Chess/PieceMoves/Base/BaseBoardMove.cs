@@ -11,15 +11,18 @@ namespace Chess.PieceMoves
 
         protected ChessBoard chess = ChessBoard.Instance;
 
-        protected List<string> GettingActualPossibleMove(List<string> inputValue)
+        protected List<string> GettingActualPossibleMove(List<int> inputValue)
         {
             var possibleMove = new List<string>();
 
             inputValue.ForEach(_item =>
             {
-                if (!chess.BoardMap[Convert.ToInt32(_item)].Item2)
+                if (_item > 0)
                 {
-                    possibleMove.Add(chess.BoardMap[Convert.ToInt32(_item)].Item1);
+                    if (!chess.BoardMap[_item].Item2)
+                    {
+                        possibleMove.Add(chess.BoardMap[_item].Item1);
+                    }
                 }
             });
             

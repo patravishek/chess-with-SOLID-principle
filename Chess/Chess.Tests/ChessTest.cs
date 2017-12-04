@@ -24,6 +24,8 @@ namespace Chess.Tests
 
             Assert.AreEqual("A6", chess.BoardMap.Find(value => value.Item1.Equals("A6")).Item1);
             Assert.AreEqual(false, chess.BoardMap.Find(value => value.Item1.Equals("A6")).Item2);
+
+            Assert.AreNotEqual("D9", chess.BoardMap.Find(value => value.Item1.Equals("D9")).Item1);
         }
         
         [TestMethod]
@@ -40,6 +42,34 @@ namespace Chess.Tests
             Assert.AreEqual("D4", outcome1.Find(value => value.Equals("D4")));
             Assert.AreEqual("C4", outcome1.Find(value => value.Equals("C4")));
             Assert.AreEqual("E4", outcome1.Find(value => value.Equals("E4")));
+
+            var outcome2 = king.Moves("D8");
+            Assert.AreEqual("D7", outcome2.Find(value => value.Equals("D7")));
+            Assert.AreEqual("E8", outcome2.Find(value => value.Equals("E8")));
+            Assert.AreEqual("C8", outcome2.Find(value => value.Equals("C8")));
+            Assert.AreEqual("C7", outcome2.Find(value => value.Equals("C7")));
+            Assert.AreEqual("E7", outcome2.Find(value => value.Equals("E7")));
+
+            //Tests should fail since they are out of index
+            Assert.AreNotEqual("D9", outcome2.Find(value => value.Equals("D9")));
+            Assert.AreNotEqual("C9", outcome2.Find(value => value.Equals("C9")));
+            Assert.AreNotEqual("E9", outcome2.Find(value => value.Equals("E9")));
+        }
+
+        [TestMethod]
+        public void TestHorseMoves()
+        {
+            chess.CreateChessBoard();
+            var horse = new HorseMove();
+            var outcome1 = horse.Moves("E3");
+            Assert.AreEqual("D5", outcome1.Find(value => value.Equals("D5")));
+            Assert.AreEqual("F5", outcome1.Find(value => value.Equals("F5")));
+            Assert.AreEqual("C4", outcome1.Find(value => value.Equals("C4")));
+            Assert.AreEqual("G4", outcome1.Find(value => value.Equals("G4")));
+            Assert.AreEqual("C2", outcome1.Find(value => value.Equals("C2")));
+            Assert.AreEqual("G2", outcome1.Find(value => value.Equals("G2")));
+            Assert.AreEqual("D1", outcome1.Find(value => value.Equals("D1")));
+            Assert.AreEqual("F1", outcome1.Find(value => value.Equals("F1")));
         }
 
         [TestMethod]

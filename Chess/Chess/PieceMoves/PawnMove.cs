@@ -14,9 +14,9 @@ namespace Chess.PieceMoves
         public override List<string> Moves(string currentPosition)
         {
             var currentPositionIndex = chess.BoardMap.IndexOf(chess.BoardMap.Find(value => value.Item1.Equals(currentPosition)));
-            var nextPossibleMove = new List<string>
+            var nextPossibleMove = new List<int>
             {
-                Convert.ToString(currentPositionIndex + Constant.Row)
+                (currentPositionIndex + Constant.Row)
             };
 
             //Check if the positions are not occupied
