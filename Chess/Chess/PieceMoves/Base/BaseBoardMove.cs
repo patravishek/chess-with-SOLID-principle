@@ -35,7 +35,7 @@ namespace Chess.PieceMoves
         /// <param name="pieceName"></param>
         /// <param name="cell"></param>
         /// <returns></returns>
-        protected bool UpdateMove(string pieceName, string cell)
+        protected string UpdateMove(string pieceName, string cell)
         {
             throw new NotImplementedException();
         }

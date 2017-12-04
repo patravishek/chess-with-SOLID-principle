@@ -2,6 +2,7 @@ using System;
 using Chess.Interface;
 using Chess.Constants;
 using System.Collections.Generic;
+using Chess.PieceMoves;
 
 namespace Chess.Implementation
 {
@@ -40,9 +41,41 @@ namespace Chess.Implementation
             }
         }
 
-        public List<string> PieceMoveInBoard(string pieceName)
+        public string PieceMoveInBoard(string pieceName, string cell)
         {
-            throw new NotImplementedException();
+            var moves = string.Empty;
+
+            switch (pieceName.ToLower())
+            {
+                case "king":
+                    var kingObj = new KingMove();
+                    moves = ConvertListToString(kingObj.Moves(cell));
+                    break;
+                case "horse":
+                    var horseObj = new HorseMove();
+                    moves = ConvertListToString(horseObj.Moves(cell));
+                    break;
+                case "pawn":
+                    var pawnObj = new PawnMove();
+                    moves = ConvertListToString(pawnObj.Moves(cell));
+                    break;
+                default:
+                    moves = "Hey!I think your input statment is wrong";
+                    break;
+
+            }
+
+            return moves;
+        }
+
+        private string ConvertListToString(List<string> lstMoves)
+        {
+            string moves = string.Empty;
+            lstMoves.ForEach(item =>
+            {
+                moves += item + ",";
+            });
+            return moves;
         }
 
         private string GenerateCellName(int rowId, int colId)

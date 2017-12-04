@@ -25,7 +25,7 @@ namespace Chess.Tests
             Assert.AreEqual("A6", chess.BoardMap.Find(value => value.Item1.Equals("A6")).Item1);
             Assert.AreEqual(false, chess.BoardMap.Find(value => value.Item1.Equals("A6")).Item2);
 
-            Assert.AreNotEqual("D9", chess.BoardMap.Find(value => value.Item1.Equals("D9")).Item1);
+            Assert.IsNull(chess.BoardMap.Find(value => value.Item1.Equals("D9")));
         }
         
         [TestMethod]
@@ -75,6 +75,7 @@ namespace Chess.Tests
         [TestMethod]
         public void TestPawnMoves()
         {
+            chess.CreateChessBoard();
             var pawn = new PawnMove();
             var outcome1 = pawn.Moves("H7");
             Assert.AreEqual("H6", outcome1.Find(value => value.Equals("H6")));
@@ -84,6 +85,14 @@ namespace Chess.Tests
             Assert.AreEqual("B2", outcome3.Find(value => value.Equals("B2")));
             var outcome4 = pawn.Moves("E5");
             Assert.AreEqual("E4", outcome4.Find(value => value.Equals("E4")));
+        }
+
+        [TestMethod]
+        public void TestPieceMoveInBoard()
+        {
+            chess.CreateChessBoard();
+            var outcome = chess.PieceMoveInBoard("King", "D5");
+            Assert.IsNotNull(outcome);
         }
     }
 }
