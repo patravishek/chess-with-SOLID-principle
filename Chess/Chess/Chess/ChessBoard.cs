@@ -5,8 +5,20 @@ using System.Collections.Generic;
 
 namespace Chess.Implementation
 {
-    public class ChessBoard : IChessBoard
+    public sealed class ChessBoard : IChessBoard
     {
+        private ChessBoard()
+        {
+        }
+        private static readonly Lazy<ChessBoard> lazy = new Lazy<ChessBoard>(() => new ChessBoard());
+        public static ChessBoard Instance
+        {
+            get
+            {
+                return lazy.Value;
+            }
+        }
+
         private List<Tuple<string, bool>> _boardMap = new List<Tuple<string, bool>>();
 
         public List<Tuple<string,bool>> BoardMap
@@ -23,10 +35,14 @@ namespace Chess.Implementation
             {
                 for(int row = Constant.Row; row >= 1; row--)
                 {
-                    Console.Write("{0}", GenerateCellName(row,col));
+                    GenerateCellName(row,col);
                 }
-                Console.Write("\n");
             }
+        }
+
+        public List<string> PieceMoveInBoard(string pieceName)
+        {
+            throw new NotImplementedException();
         }
 
         private string GenerateCellName(int rowId, int colId)
