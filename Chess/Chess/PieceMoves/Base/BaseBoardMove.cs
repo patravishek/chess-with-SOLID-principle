@@ -17,7 +17,7 @@ namespace Chess.PieceMoves
 
             inputValue.ForEach(_item =>
             {
-                if (_item > 0)
+                if ((_item > 0) && (_item <= (Constants.Constant.Row * Constants.Constant.Col)))
                 {
                     if (!chess.BoardMap[_item].Item2)
                     {
