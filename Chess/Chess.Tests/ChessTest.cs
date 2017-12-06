@@ -88,6 +88,41 @@ namespace Chess.Tests
         }
 
         [TestMethod]
+        public void TestBishopMoves()
+        {
+            chess.CreateChessBoard();
+            var bishop = new BishopMove();
+            var outcome1 = bishop.Moves("D4");
+            Assert.AreEqual("E3", outcome1.Find(value => value.Equals("E3")));
+            Assert.AreEqual("C3", outcome1.Find(value => value.Equals("C3")));
+            Assert.AreEqual("B2", outcome1.Find(value => value.Equals("B2")));
+            Assert.AreEqual("F2", outcome1.Find(value => value.Equals("F2")));
+            Assert.AreEqual("A1", outcome1.Find(value => value.Equals("A1")));
+            Assert.AreEqual("G1", outcome1.Find(value => value.Equals("G1")));
+            Assert.AreEqual("C5", outcome1.Find(value => value.Equals("C5")));
+            Assert.AreEqual("B6", outcome1.Find(value => value.Equals("B6")));
+            Assert.AreEqual("G7", outcome1.Find(value => value.Equals("G7")));
+            Assert.AreEqual("A7", outcome1.Find(value => value.Equals("A7")));
+            Assert.AreEqual("H8", outcome1.Find(value => value.Equals("H8")));
+            Assert.AreEqual("B6", outcome1.Find(value => value.Equals("B6")));
+            Assert.AreEqual("F6", outcome1.Find(value => value.Equals("F6")));
+
+            var outcome2 = bishop.Moves("D8");
+            Assert.AreEqual("C7", outcome2.Find(value => value.Equals("C7")));
+            Assert.AreEqual("E7", outcome2.Find(value => value.Equals("E7")));
+            Assert.AreEqual("B6", outcome2.Find(value => value.Equals("B6")));
+            Assert.AreEqual("F6", outcome2.Find(value => value.Equals("F6")));
+            Assert.AreEqual("A5", outcome2.Find(value => value.Equals("A5")));
+            Assert.AreEqual("G5", outcome2.Find(value => value.Equals("G5")));
+            Assert.AreEqual("H4", outcome2.Find(value => value.Equals("H4")));
+
+            var outcome3 = bishop.Moves("F4");
+            Assert.AreEqual("H6", outcome3.Find(value => value.Equals("H6")));
+            Assert.AreEqual("C1", outcome3.Find(value => value.Equals("C1")));
+
+        }
+
+        [TestMethod]
         public void TestPieceMoveInBoard()
         {
             chess.CreateChessBoard();
