@@ -17,22 +17,7 @@ namespace Chess.PieceMoves
             var nextPossibleMove = new List<int>();
             var currentRowNum = Convert.ToInt32(Regex.Replace(currentPosition, "[^0-9]+", string.Empty));
             
-            for (var iterator = currentRowNum; iterator >= 1; iterator--)
-            {
-                var nextRightPositionIndex = currentPositionIndex + ((Constants.Constant.Row * iterator) + iterator);
-                var nextLeftPositionIndex = currentPositionIndex + ((Constants.Constant.Row * iterator) - iterator);
-                
-                nextPossibleMove.Add(nextRightPositionIndex);
-                nextPossibleMove.Add(nextLeftPositionIndex);
-
-                var nextDownwardRightPositionIndex = currentPositionIndex - ((Constants.Constant.Row * iterator) + iterator);
-                var nextDownwardLeftPositionIndex = currentPositionIndex - ((Constants.Constant.Row * iterator) - iterator);
-
-                nextPossibleMove.Add(nextDownwardRightPositionIndex);
-                nextPossibleMove.Add(nextDownwardLeftPositionIndex);
-
-            }
-            
+            nextPossibleMove = DiagonalMove(currentRowNum, currentPositionIndex);
             //Check if the positions are not occupied and are valid moves
             return GettingActualPossibleMove(nextPossibleMove);
         }
