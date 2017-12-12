@@ -92,34 +92,33 @@ namespace Chess.Tests
         {
             chess.CreateChessBoard();
             var bishop = new BishopMove();
-            var outcome1 = bishop.Moves("D4");
-            Assert.AreEqual("E3", outcome1.Find(value => value.Equals("E3")));
-            Assert.AreEqual("C3", outcome1.Find(value => value.Equals("C3")));
-            Assert.AreEqual("B2", outcome1.Find(value => value.Equals("B2")));
-            Assert.AreEqual("F2", outcome1.Find(value => value.Equals("F2")));
-            Assert.AreEqual("A1", outcome1.Find(value => value.Equals("A1")));
-            Assert.AreEqual("G1", outcome1.Find(value => value.Equals("G1")));
-            Assert.AreEqual("C5", outcome1.Find(value => value.Equals("C5")));
-            Assert.AreEqual("B6", outcome1.Find(value => value.Equals("B6")));
-            Assert.AreEqual("G7", outcome1.Find(value => value.Equals("G7")));
-            Assert.AreEqual("A7", outcome1.Find(value => value.Equals("A7")));
-            Assert.AreEqual("H8", outcome1.Find(value => value.Equals("H8")));
-            Assert.AreEqual("B6", outcome1.Find(value => value.Equals("B6")));
-            Assert.AreEqual("F6", outcome1.Find(value => value.Equals("F6")));
+            
+            // Not implemented
 
-            var outcome2 = bishop.Moves("D8");
-            Assert.AreEqual("C7", outcome2.Find(value => value.Equals("C7")));
-            Assert.AreEqual("E7", outcome2.Find(value => value.Equals("E7")));
-            Assert.AreEqual("B6", outcome2.Find(value => value.Equals("B6")));
-            Assert.AreEqual("F6", outcome2.Find(value => value.Equals("F6")));
-            Assert.AreEqual("A5", outcome2.Find(value => value.Equals("A5")));
-            Assert.AreEqual("G5", outcome2.Find(value => value.Equals("G5")));
-            Assert.AreEqual("H4", outcome2.Find(value => value.Equals("H4")));
+        }
 
-            var outcome3 = bishop.Moves("F4");
-            Assert.AreEqual("H6", outcome3.Find(value => value.Equals("H6")));
-            Assert.AreEqual("C1", outcome3.Find(value => value.Equals("C1")));
+        [TestMethod]
+        public void TestRootMoves()
+        {
+            chess.CreateChessBoard();
+            var rook = new RookMove();
+            var outcome = rook.Moves("E4");
 
+            Assert.AreEqual("E8", outcome.Find(value => value.Equals("E8")));
+            Assert.AreEqual("E7", outcome.Find(value => value.Equals("E7")));
+            Assert.AreEqual("E6", outcome.Find(value => value.Equals("E6")));
+            Assert.AreEqual("E5", outcome.Find(value => value.Equals("E5")));
+            Assert.AreEqual("E3", outcome.Find(value => value.Equals("E3")));
+            Assert.AreEqual("E2", outcome.Find(value => value.Equals("E2")));
+            Assert.AreEqual("E1", outcome.Find(value => value.Equals("E1")));
+
+            Assert.AreEqual("A4", outcome.Find(value => value.Equals("A4")));
+            Assert.AreEqual("B4", outcome.Find(value => value.Equals("B4")));
+            Assert.AreEqual("C4", outcome.Find(value => value.Equals("C4")));
+            Assert.AreEqual("D4", outcome.Find(value => value.Equals("D4")));
+            Assert.AreEqual("F4", outcome.Find(value => value.Equals("F4")));
+            Assert.AreEqual("G4", outcome.Find(value => value.Equals("G4")));
+            Assert.AreEqual("H4", outcome.Find(value => value.Equals("H4")));
         }
 
         [TestMethod]

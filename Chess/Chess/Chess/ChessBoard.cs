@@ -41,9 +41,16 @@ namespace Chess.Implementation
             }
         }
 
+        /// <summary>
+        /// This method can be implemented with reflection but that might put a little overhead, as number of objects are fixed.
+        /// </summary>
+        /// <param name="pieceName"></param>
+        /// <param name="cell"></param>
+        /// <returns></returns>
         public string PieceMoveInBoard(string pieceName, string cell)
         {
             var moves = string.Empty;
+            cell = cell.ToUpper();
 
             switch (pieceName.ToLower())
             {
@@ -58,6 +65,18 @@ namespace Chess.Implementation
                 case "pawn":
                     var pawnObj = new PawnMove();
                     moves = ConvertListToString(pawnObj.Moves(cell));
+                    break;
+                case "bishop":
+                    var bishopObj = new BishopMove();
+                    moves = ConvertListToString(bishopObj.Moves(cell));
+                    break;
+                case "queen":
+                    var queenObj = new QueenMove();
+                    moves = ConvertListToString(queenObj.Moves(cell));
+                    break;
+                case "rook":
+                    var rookObj = new RookMove();
+                    moves = ConvertListToString(rookObj.Moves(cell));
                     break;
                 default:
                     moves = "Hey!I think your input statment is wrong";
