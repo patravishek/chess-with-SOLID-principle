@@ -17,14 +17,15 @@ namespace Chess.PieceMoves
             var nextPossibleMove = new List<int>();
             var indexs = GetPositionIndexAndRowIndex(currentPosition);
 
-            //Setting up horizontal and vertical direction
+            //Possible Moves
             nextPossibleMove.AddRange(VerticalDownMoves(indexs.currentPositionIndex));
             nextPossibleMove.AddRange(VerticalUpMoves(indexs.currentPositionIndex));
             nextPossibleMove.AddRange(HorizontalForwardMoves(indexs.currentPositionIndex, indexs.rowIndex));
             nextPossibleMove.AddRange(HorizontalReverseMoves(indexs.currentPositionIndex, indexs.rowIndex));
-
-            //Setting up diagonal direction
-
+            nextPossibleMove.AddRange(DiagonalMoveDownward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(DiagonalMoveUpward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(DiagonalMoveReverseUpward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(DiagonalMoveReverseDownward(indexs.currentPositionIndex, indexs.rowIndex));
 
             //Check if the positions are not occupied
             return GettingActualPossibleMove(nextPossibleMove);

@@ -13,11 +13,14 @@ namespace Chess.PieceMoves
         /// <returns></returns>
         public override List<string> Moves(string currentPosition)
         {
-            var currentPositionIndex = chess.BoardMap.IndexOf(chess.BoardMap.Find(value => value.Item1.Equals(currentPosition)));
             var nextPossibleMove = new List<int>();
-            var currentRowNum = Convert.ToInt32(Regex.Replace(currentPosition, "[^0-9]+", string.Empty));
-            
-            nextPossibleMove = DiagonalMove(currentRowNum, currentPositionIndex);
+            var indexs = GetPositionIndexAndRowIndex(currentPosition);
+
+            nextPossibleMove.AddRange(DiagonalMoveUpward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(DiagonalMoveDownward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(DiagonalMoveReverseUpward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(DiagonalMoveReverseDownward(indexs.currentPositionIndex, indexs.rowIndex));
+
             //Check if the positions are not occupied and are valid moves
             return GettingActualPossibleMove(nextPossibleMove);
         }
