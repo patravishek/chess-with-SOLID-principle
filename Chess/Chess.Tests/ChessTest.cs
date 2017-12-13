@@ -105,6 +105,43 @@ namespace Chess.Tests
             Assert.AreEqual("A7", outcome2.Find(value => value.Equals("A7")));
             
         }
+        
+        [TestMethod]
+        public void TestQueenMoves()
+        {
+            chess.CreateChessBoard();
+            var queen = new QueenMove();
+            var outcome = queen.Moves("G8");
+
+            Assert.AreEqual("H7", outcome.Find(value => value.Equals("H7")));
+
+            var outcome2 = queen.Moves("D4");
+            Assert.AreEqual("E3", outcome2.Find(value => value.Equals("E3")));
+            Assert.AreEqual("F2", outcome2.Find(value => value.Equals("F2")));
+            Assert.AreEqual("G1", outcome2.Find(value => value.Equals("G1")));
+            Assert.AreEqual("C5", outcome2.Find(value => value.Equals("C5")));
+            Assert.AreEqual("B6", outcome2.Find(value => value.Equals("B6")));
+            Assert.AreEqual("A7", outcome2.Find(value => value.Equals("A7")));
+
+            var outcome3 = queen.Moves("E4");
+
+            Assert.AreEqual("E8", outcome3.Find(value => value.Equals("E8")));
+            Assert.AreEqual("E7", outcome3.Find(value => value.Equals("E7")));
+            Assert.AreEqual("E6", outcome3.Find(value => value.Equals("E6")));
+            Assert.AreEqual("E5", outcome3.Find(value => value.Equals("E5")));
+            Assert.AreEqual("E3", outcome3.Find(value => value.Equals("E3")));
+            Assert.AreEqual("E2", outcome3.Find(value => value.Equals("E2")));
+            Assert.AreEqual("E1", outcome3.Find(value => value.Equals("E1")));
+
+            Assert.AreEqual("A4", outcome3.Find(value => value.Equals("A4")));
+            Assert.AreEqual("B4", outcome3.Find(value => value.Equals("B4")));
+            Assert.AreEqual("C4", outcome3.Find(value => value.Equals("C4")));
+            Assert.AreEqual("D4", outcome3.Find(value => value.Equals("D4")));
+            Assert.AreEqual("F4", outcome3.Find(value => value.Equals("F4")));
+            Assert.AreEqual("G4", outcome3.Find(value => value.Equals("G4")));
+            Assert.AreEqual("H4", outcome3.Find(value => value.Equals("H4")));
+
+        }
 
         [TestMethod]
         public void TestRootMoves()
