@@ -92,9 +92,18 @@ namespace Chess.Tests
         {
             chess.CreateChessBoard();
             var bishop = new BishopMove();
+            var outcome = bishop.Moves("G8");
             
-            // Not implemented
-
+            Assert.AreEqual("H7", outcome.Find(value => value.Equals("H7")));
+            
+            var outcome2 = bishop.Moves("D4");
+            Assert.AreEqual("E3", outcome2.Find(value => value.Equals("E3")));
+            Assert.AreEqual("F2", outcome2.Find(value => value.Equals("F2")));
+            Assert.AreEqual("G1", outcome2.Find(value => value.Equals("G1")));
+            Assert.AreEqual("C5", outcome2.Find(value => value.Equals("C5")));
+            Assert.AreEqual("B6", outcome2.Find(value => value.Equals("B6")));
+            Assert.AreEqual("A7", outcome2.Find(value => value.Equals("A7")));
+            
         }
 
         [TestMethod]

@@ -36,9 +36,74 @@ namespace Chess.PieceMoves
         /// <param name="currentRowNum"></param>
         /// <param name="currentPositionIndex"></param>
         /// <returns></returns>
-        public virtual List<int> DiagonalMove(int rowIndex, int currentPositionIndex)
+        public virtual List<int> DiagonalMoveUpward(int currentPositionIndex, int rowIndex)
         {
-            throw new NotImplementedException();
+            var nextPossibleMove = new List<int>();
+            var maxPossibleShifts = Constants.Constant.Row - rowIndex;
+
+            for (var iterator = 1; iterator < maxPossibleShifts; iterator++)
+            {
+                nextPossibleMove.Add(currentPositionIndex + ((Constants.Constant.Col * iterator) + iterator));
+            }
+
+            return nextPossibleMove;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="currentPositionIndex"></param>
+        /// <param name="rowIndex"></param>
+        /// <returns></returns>
+        public virtual List<int> DiagonalMoveDownward(int currentPositionIndex, int rowIndex)
+        {
+            var nextPossibleMove = new List<int>();
+            var maxPossibleShifts = Constants.Constant.Row - rowIndex;
+
+            for (var iterator = 1; iterator < maxPossibleShifts; iterator++)
+            {
+                nextPossibleMove.Add(currentPositionIndex - ((Constants.Constant.Col * iterator) + iterator));
+            }
+
+            return nextPossibleMove;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="currentPositionIndex"></param>
+        /// <param name="rowIndex"></param>
+        /// <returns></returns>
+        public virtual List<int> DiagonalMoveReverseUpward(int currentPositionIndex, int rowIndex)
+        {
+            var nextPossibleMove = new List<int>();
+            
+            var incremental = 1;
+            for (var iterator = rowIndex; iterator > 0; iterator--,incremental++)
+            {
+                nextPossibleMove.Add(currentPositionIndex + ((Constants.Constant.Row * incremental) - incremental));
+            }
+
+            return nextPossibleMove;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="currentPositionIndex"></param>
+        /// <param name="rowIndex"></param>
+        /// <returns></returns>
+        public virtual List<int> DiagonalMoveReverseDownward(int currentPositionIndex, int rowIndex)
+        {
+            var nextPossibleMove = new List<int>();
+
+            var incremental = 1;
+            for (var iterator = rowIndex; iterator > 0; iterator--, incremental++)
+            {
+                nextPossibleMove.Add(currentPositionIndex - ((Constants.Constant.Row * incremental) - incremental));
+            }
+
+            return nextPossibleMove;
         }
 
         /// <summary>
