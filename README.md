@@ -30,3 +30,7 @@ Enter a piece type to move:King D6
 E6,C6,D5,E5,C5,D7,C7,E7,
 
 Since its built on a console platform so it might gives an impression that IChessBoard interface is not getting used, but I have kept a provision incase we decide to change the platform from console to windows or web based app, then we can Use DI and IoC more easily and create a robost chess app.
+
+=============================12/13/2017================================
+===============Decleration of virtual functions in BaseMoves Class======================
+I have created virtual functions for Diagonal Moves, Vertical Moves and Horizontal Moves because as of now we are considering the board is empty and only one color is present, but in actual game there will be two colour and amoung them individual items has their own power based on that they can elminate another item from the board, Considering queen can eliminate anyone from the board but pawn cannot eliminate queen from the board, So these virtual functions will help us to override the functional when we will be implementing this scenario.
