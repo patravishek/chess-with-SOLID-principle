@@ -1,6 +1,9 @@
 ﻿using System;
 using Chess.Implementation;
 using Chess.Constants;
+using Chess.PieceMoves.Base;
+using Chess.PieceMoves.TypeMoves;
+using System.Collections.Generic;
 
 namespace Chess
 {
@@ -19,11 +22,37 @@ namespace Chess
                 counter++;
             }
 
+            var moveTypes = new PositionMoves[6];
+            moveTypes[0] = new RookTypeMove();
+            moveTypes[1] = new BishopTypeMove();
+            moveTypes[2] = new HorseTypeMove();
+            moveTypes[3] = new KingTypeMove();
+            moveTypes[4] = new QueenTypeMove();
+            moveTypes[5] = new PawnTypeMove();
+
             string displayText = "@@Avilable Pieces, 'King, Queen, Bishop, Horse, Rook, Pawn' @Enter a piece type to move:";
             Console.Write(displayText.Replace("@",System.Environment.NewLine));
             var inputString = Console.ReadLine();
-            Console.WriteLine(chess.PieceMoveInBoard(inputString.Split(" ")[0], inputString.Split(" ")[1]));
+            
+            foreach(var item in moveTypes)
+            {
+                if(item.GetType().Name.ToLower().Contains(inputString.Split(" ")[0].ToLower()))
+                {
+                    Console.WriteLine(ConvertListToString(item.MoveIndividualTypes(inputString.Split(" ")[1].ToUpper())));
+                }
+            }
+            
             Console.ReadLine();
+        }
+
+        public static string ConvertListToString(List<string> lstMoves)
+        {
+            string moves = string.Empty;
+            lstMoves.ForEach(item =>
+            {
+                moves += item + ",";
+            });
+            return moves;
         }
     }
 }
