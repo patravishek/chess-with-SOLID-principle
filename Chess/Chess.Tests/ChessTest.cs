@@ -166,13 +166,6 @@ namespace Chess.Tests
             Assert.AreEqual("G4", outcome.Find(value => value.Equals("G4")));
             Assert.AreEqual("H4", outcome.Find(value => value.Equals("H4")));
         }
-
-        [TestMethod]
-        public void TestPieceMoveInBoard()
-        {
-            chess.CreateChessBoard();
-            var outcome = chess.PieceMoveInBoard("King", "D5");
-            Assert.IsNotNull(outcome);
-        }
+        
     }
 }

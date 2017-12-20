@@ -40,63 +40,7 @@ namespace Chess.Implementation
                 }
             }
         }
-
-        /// <summary>
-        /// This method can be implemented with reflection but that might put a little overhead, as number of objects are fixed.
-        /// </summary>
-        /// <param name="pieceName"></param>
-        /// <param name="cell"></param>
-        /// <returns></returns>
-        public string PieceMoveInBoard(string pieceName, string cell)
-        {
-            var moves = string.Empty;
-            cell = cell.ToUpper();
-
-            switch (pieceName.ToLower())
-            {
-                case "king":
-                    var kingObj = new KingMove();
-                    moves = ConvertListToString(kingObj.Moves(cell));
-                    break;
-                case "horse":
-                    var horseObj = new HorseMove();
-                    moves = ConvertListToString(horseObj.Moves(cell));
-                    break;
-                case "pawn":
-                    var pawnObj = new PawnMove();
-                    moves = ConvertListToString(pawnObj.Moves(cell));
-                    break;
-                case "bishop":
-                    var bishopObj = new BishopMove();
-                    moves = ConvertListToString(bishopObj.Moves(cell));
-                    break;
-                case "queen":
-                    var queenObj = new QueenMove();
-                    moves = ConvertListToString(queenObj.Moves(cell));
-                    break;
-                case "rook":
-                    var rookObj = new RookMove();
-                    moves = ConvertListToString(rookObj.Moves(cell));
-                    break;
-                default:
-                    moves = "Hey!I think your input statment is wrong";
-                    break;
-
-            }
-
-            return moves;
-        }
-
-        private string ConvertListToString(List<string> lstMoves)
-        {
-            string moves = string.Empty;
-            lstMoves.ForEach(item =>
-            {
-                moves += item + ",";
-            });
-            return moves;
-        }
-
+        
         private string GenerateCellName(int rowId, int colId)
         {
             var _cellName = Constant.GetRowName(Constant.Row - rowId) + Convert.ToString(colId);
