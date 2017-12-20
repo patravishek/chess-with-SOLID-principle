@@ -22,13 +22,7 @@ namespace Chess
                 counter++;
             }
 
-            var moveTypes = new PositionMoves[6];
-            moveTypes[0] = new RookTypeMove();
-            moveTypes[1] = new BishopTypeMove();
-            moveTypes[2] = new HorseTypeMove();
-            moveTypes[3] = new KingTypeMove();
-            moveTypes[4] = new QueenTypeMove();
-            moveTypes[5] = new PawnTypeMove();
+            var moveTypes = new FacadePositionMoves().PositionMovesType;
 
             string displayText = "@@Avilable Pieces, 'King, Queen, Bishop, Horse, Rook, Pawn' @Enter a piece type to move:";
             Console.Write(displayText.Replace("@",System.Environment.NewLine));
