@@ -1,5 +1,4 @@
-﻿using Chess.Constants;
-using System;
+﻿using Chess.Constant;
 using System.Collections.Generic;
 
 namespace Chess.PieceMoves
@@ -13,21 +12,21 @@ namespace Chess.PieceMoves
         /// <returns></returns>
         public override List<string> Moves(string currentPosition)
         {
-            var currentPositionIndex = chess.BoardMap.IndexOf(chess.BoardMap.Find(value => value.Item1.Equals(currentPosition)));
+            var indexs = Helper.GetPositionIndexAndRowIndex(currentPosition);
             var nextPossibleMove = new List<int>
             {
-                (currentPositionIndex + 1),//E5
-                (currentPositionIndex - 1),//C5
-                (currentPositionIndex + Constant.Row),//D4
-                (currentPositionIndex + (Constant.Row + 1)),//E4
-                (currentPositionIndex + (Constant.Row - 1)),//C4
-                (currentPositionIndex - Constant.Row),//D6
-                (currentPositionIndex - (Constant.Row + 1)),//C6
-                (currentPositionIndex - (Constant.Row - 1))//E6
+                (indexs.currentPositionIndex + 1),//E5
+                (indexs.currentPositionIndex - 1),//C5
+                (indexs.currentPositionIndex + Constant.Constants.Row),//D4
+                (indexs.currentPositionIndex + (Constant.Constants.Row + 1)),//E4
+                (indexs.currentPositionIndex + (Constant.Constants.Row - 1)),//C4
+                (indexs.currentPositionIndex - Constant.Constants.Row),//D6
+                (indexs.currentPositionIndex - (Constant.Constants.Row + 1)),//C6
+                (indexs.currentPositionIndex - (Constant.Constants.Row - 1))//E6
             };
 
             //Check if the positions are not occupied
-            return GettingActualPossibleMove(nextPossibleMove);
+            return Helper.GettingActualPossibleMove(nextPossibleMove);
         }
     }
 }

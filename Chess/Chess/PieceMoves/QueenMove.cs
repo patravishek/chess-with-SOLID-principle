@@ -1,12 +1,22 @@
-﻿using Chess.Constants;
-using System;
+﻿using Chess.PieceMoves.Base.DiagonalMoves;
+using Chess.PieceMoves.Base.HorizontalMoves;
+using Chess.PieceMoves.Base.VerticalMoves;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Chess.PieceMoves
 {
     public class QueenMove : BasePieceMoves
     {
+        private IVerticalMoves verticalMoves;
+        private IHorizontalMoves horizontalMoves;
+        private IDiagonalMoves diagonalMoves;
+
+        public QueenMove()
+        {
+            verticalMoves = new VerticalMoves();
+            horizontalMoves = new HorizontalMoves();
+            diagonalMoves = new DiagonalMoves();
+        }
         /// <summary>
         /// Queen Can move any direction
         /// </summary>
@@ -15,20 +25,20 @@ namespace Chess.PieceMoves
         public override List<string> Moves(string currentPosition)
         {
             var nextPossibleMove = new List<int>();
-            var indexs = GetPositionIndexAndRowIndex(currentPosition);
+            var indexs = Helper.GetPositionIndexAndRowIndex(currentPosition);
 
             //Possible Moves
-            nextPossibleMove.AddRange(VerticalDownMoves(indexs.currentPositionIndex));
-            nextPossibleMove.AddRange(VerticalUpMoves(indexs.currentPositionIndex));
-            nextPossibleMove.AddRange(HorizontalForwardMoves(indexs.currentPositionIndex, indexs.rowIndex));
-            nextPossibleMove.AddRange(HorizontalReverseMoves(indexs.currentPositionIndex, indexs.rowIndex));
-            nextPossibleMove.AddRange(DiagonalMoveDownward(indexs.currentPositionIndex, indexs.rowIndex));
-            nextPossibleMove.AddRange(DiagonalMoveUpward(indexs.currentPositionIndex, indexs.rowIndex));
-            nextPossibleMove.AddRange(DiagonalMoveReverseUpward(indexs.currentPositionIndex, indexs.rowIndex));
-            nextPossibleMove.AddRange(DiagonalMoveReverseDownward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(verticalMoves.VerticalDownMoves(indexs.currentPositionIndex));
+            nextPossibleMove.AddRange(verticalMoves.VerticalUpMoves(indexs.currentPositionIndex));
+            nextPossibleMove.AddRange(horizontalMoves.HorizontalForwardMoves(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(horizontalMoves.HorizontalReverseMoves(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(diagonalMoves.DiagonalMoveDownward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(diagonalMoves.DiagonalMoveUpward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(diagonalMoves.DiagonalMoveReverseUpward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(diagonalMoves.DiagonalMoveReverseDownward(indexs.currentPositionIndex, indexs.rowIndex));
 
             //Check if the positions are not occupied
-            return GettingActualPossibleMove(nextPossibleMove);
+            return Helper.GettingActualPossibleMove(nextPossibleMove);
         }
     }
 }
