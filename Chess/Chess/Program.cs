@@ -1,6 +1,5 @@
 ﻿using System;
 using Chess.Implementation;
-using Chess.Constant;
 using System.Collections.Generic;
 
 namespace Chess
@@ -20,10 +19,10 @@ namespace Chess
                 counter++;
             }
 
-            var moveTypes = new FacadePositionMoves().PositionMovesType;
+            var moveTypes = new FacadePositionMoves().positionMovesType;
 
             string displayText = "@@Avilable Pieces, 'King, Queen, Bishop, Horse, Rook, Pawn' @Enter a piece type to move:";
-            Console.Write(displayText.Replace("@",System.Environment.NewLine));
+            Console.Write(displayText.Replace("@", Environment.NewLine));
             var inputString = Console.ReadLine();
             
             foreach(var item in moveTypes)
@@ -37,7 +36,7 @@ namespace Chess
             Console.ReadLine();
         }
 
-        public static string ConvertListToString(List<string> lstMoves)
+        internal static string ConvertListToString(List<string> lstMoves)
         {
             string moves = string.Empty;
             lstMoves.ForEach(item =>
