@@ -1,8 +1,7 @@
 using System;
 using Chess.Interface;
-using Chess.Constants;
+using Chess.Constant;
 using System.Collections.Generic;
-using Chess.PieceMoves;
 
 namespace Chess.Implementation
 {
@@ -32,18 +31,18 @@ namespace Chess.Implementation
 
         public void CreateChessBoard()
         {
-            for (int col = Constant.Col; col >= 1; col--)
+            for (int col = Constant.Constants.Col; col >= 1; col--)
             {
-                for(int row = Constant.Row; row >= 1; row--)
+                for(int row = Constant.Constants.Row; row >= 1; row--)
                 {
-                    GenerateCellName(row,col);
+                    GenerateCellName(row, col);
                 }
             }
         }
         
         private string GenerateCellName(int rowId, int colId)
         {
-            var _cellName = Constant.GetRowName(Constant.Row - rowId) + Convert.ToString(colId);
+            var _cellName = Constant.Constants.GetRowName(Constant.Constants.Row - rowId) + Convert.ToString(colId);
             var _boardValue = Tuple.Create(_cellName, false);
             _boardMap.Add(_boardValue);
             return _cellName;

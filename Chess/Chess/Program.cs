@@ -1,8 +1,6 @@
 ﻿using System;
 using Chess.Implementation;
-using Chess.Constants;
-using Chess.PieceMoves.Base;
-using Chess.PieceMoves.TypeMoves;
+using Chess.Constant;
 using System.Collections.Generic;
 
 namespace Chess
@@ -18,7 +16,7 @@ namespace Chess
             foreach(var item in chess.BoardMap)
             {
                 Console.Write("{0}", item.Item1);
-                if (counter % Constant.Row == 0) { Console.Write("\n"); }
+                if (counter % Constant.Constants.Row == 0) { Console.Write("\n"); }
                 counter++;
             }
 
@@ -32,7 +30,7 @@ namespace Chess
             {
                 if(item.GetType().Name.ToLower().Contains(inputString.Split(" ")[0].ToLower()))
                 {
-                    Console.WriteLine(ConvertListToString(item.MoveIndividualTypes(inputString.Split(" ")[1].ToUpper())));
+                    Console.WriteLine(ConvertListToString(item.Moves(inputString.Split(" ")[1].ToUpper())));
                 }
             }
             
