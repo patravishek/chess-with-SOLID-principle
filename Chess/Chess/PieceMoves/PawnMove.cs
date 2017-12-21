@@ -1,5 +1,4 @@
-﻿using Chess.Constants;
-using System;
+﻿using Chess.Constant;
 using System.Collections.Generic;
 
 namespace Chess.PieceMoves
@@ -13,14 +12,14 @@ namespace Chess.PieceMoves
         /// <returns></returns>
         public override List<string> Moves(string currentPosition)
         {
-            var currentPositionIndex = chess.BoardMap.IndexOf(chess.BoardMap.Find(value => value.Item1.Equals(currentPosition)));
+            var indexs = Helper.GetPositionIndexAndRowIndex(currentPosition);
             var nextPossibleMove = new List<int>
             {
-                (currentPositionIndex + Constant.Row)
+                (indexs.currentPositionIndex + Constant.Constants.Row)
             };
 
             //Check if the positions are not occupied
-             return GettingActualPossibleMove(nextPossibleMove);
+            return Helper.GettingActualPossibleMove(nextPossibleMove);
         }
     }
 }

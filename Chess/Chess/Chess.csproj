@@ -5,4 +5,14 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="PieceMoves\TypeMoves\**" />
+    <EmbeddedResource Remove="PieceMoves\TypeMoves\**" />
+    <None Remove="PieceMoves\TypeMoves\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="PieceMoves\Base\PositionMoves.cs" />
+  </ItemGroup>
+
 </Project>

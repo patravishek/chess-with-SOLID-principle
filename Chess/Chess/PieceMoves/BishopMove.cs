@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using Chess.PieceMoves.Base.DiagonalMoves;
 
 namespace Chess.PieceMoves
 {
     public class BishopMove : BasePieceMoves
     {
+        private IDiagonalMoves diagonalMoves;
+
+        public BishopMove()
+        {
+            diagonalMoves = new DiagonalMoves();
+        }
+
         /// <summary>
         /// Bishop Can move diagonally
         /// </summary>
@@ -14,15 +20,15 @@ namespace Chess.PieceMoves
         public override List<string> Moves(string currentPosition)
         {
             var nextPossibleMove = new List<int>();
-            var indexs = GetPositionIndexAndRowIndex(currentPosition);
+            var indexs = Helper.GetPositionIndexAndRowIndex(currentPosition);
 
-            nextPossibleMove.AddRange(DiagonalMoveUpward(indexs.currentPositionIndex, indexs.rowIndex));
-            nextPossibleMove.AddRange(DiagonalMoveDownward(indexs.currentPositionIndex, indexs.rowIndex));
-            nextPossibleMove.AddRange(DiagonalMoveReverseUpward(indexs.currentPositionIndex, indexs.rowIndex));
-            nextPossibleMove.AddRange(DiagonalMoveReverseDownward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(diagonalMoves.DiagonalMoveUpward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(diagonalMoves.DiagonalMoveDownward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(diagonalMoves.DiagonalMoveReverseUpward(indexs.currentPositionIndex, indexs.rowIndex));
+            nextPossibleMove.AddRange(diagonalMoves.DiagonalMoveReverseDownward(indexs.currentPositionIndex, indexs.rowIndex));
 
             //Check if the positions are not occupied and are valid moves
-            return GettingActualPossibleMove(nextPossibleMove);
+            return Helper.GettingActualPossibleMove(nextPossibleMove);
         }
     }
 }
